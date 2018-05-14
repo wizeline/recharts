@@ -50693,12 +50693,18 @@ var searchTargetsAndSources = function searchTargetsAndSources(links, id) {
     var link = links[i];
 
     if (link.source === id) {
-      targetNodes.push(link.target);
+      targetNodes.push({
+        target_index: link.target,
+        value: link.value
+      });
       targetLinks.push(i);
     }
 
     if (link.target === id) {
-      sourceNodes.push(link.source);
+      sourceNodes.push({
+        source_index: link.source,
+        value: link.value
+      });
       sourceLinks.push(i);
     }
   }
@@ -50708,9 +50714,9 @@ var searchTargetsAndSources = function searchTargetsAndSources(links, id) {
 
 var updateDepthOfTargets = function updateDepthOfTargets(tree, curNode) {
   var targetNodes = curNode.targetNodes;
-
   for (var i = 0, len = targetNodes.length; i < len; i++) {
-    var target = tree[targetNodes[i]];
+    var index = targetNodes[i].target_index;
+    var target = tree[index];
 
     if (target) {
       target.depth = Math.max(curNode.depth + 1, target.depth);
