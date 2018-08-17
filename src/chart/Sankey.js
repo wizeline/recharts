@@ -302,11 +302,12 @@ const getPayloadOfTooltip = (el, type, nameKey) => {
   if (payload.source && payload.target) {
     const sourceName = getValueByDataKey(payload.source, nameKey, '');
     const targetName = getValueByDataKey(payload.target, nameKey, '');
+    const value = (getValueByDataKey(payload, 'value') * 100).toFixed(0);
 
     return [{
       payload: el,
-      name: `${sourceName} - ${targetName}`,
-      value: getValueByDataKey(payload, 'value'),
+      name: `Percent of users who proceeded from ${sourceName} to ${targetName}`,
+      value: `${value}%`
     }];
   }
 
