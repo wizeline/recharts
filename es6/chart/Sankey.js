@@ -350,8 +350,8 @@ var getPayloadOfTooltip = function getPayloadOfTooltip(el, type, nameKey) {
 
     return [{
       payload: el,
-      name: 'Percent of users who proceeded from ' + sourceName + ' to ' + targetName,
-      value: value + '%'
+      name: value + '% of users proceeded from \'' + sourceName + '\' to \'' + targetName + '\'',
+      value: ''
     }];
   }
 
@@ -633,6 +633,7 @@ var Sankey = pureRender(_class = (_temp = _class2 = function (_Component) {
         active: isTooltipActive,
         coordinate: coordinate,
         label: '',
+        separator: '',
         payload: payload
       });
     }

@@ -306,8 +306,8 @@ const getPayloadOfTooltip = (el, type, nameKey) => {
 
     return [{
       payload: el,
-      name: `Percent of users who proceeded from ${sourceName} to ${targetName}`,
-      value: `${value}%`
+      name: `${value}% of users proceeded from '${sourceName}' to '${targetName}'`,
+      value: ''
     }];
   }
 
@@ -585,6 +585,7 @@ class Sankey extends Component {
       active: isTooltipActive,
       coordinate,
       label: '',
+      separator: '',
       payload,
     });
   }
