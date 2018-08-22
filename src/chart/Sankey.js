@@ -302,11 +302,12 @@ const getPayloadOfTooltip = (el, type, nameKey) => {
   if (payload.source && payload.target) {
     const sourceName = getValueByDataKey(payload.source, nameKey, '');
     const targetName = getValueByDataKey(payload.target, nameKey, '');
+    const value = (getValueByDataKey(payload, 'value') * 100).toFixed(0);
 
     return [{
       payload: el,
-      name: `${sourceName} - ${targetName}`,
-      value: getValueByDataKey(payload, 'value'),
+      name: `${value}% of users proceeded from '${sourceName}' to '${targetName}'`,
+      value: ''
     }];
   }
 
@@ -584,6 +585,7 @@ class Sankey extends Component {
       active: isTooltipActive,
       coordinate,
       label: '',
+      separator: '',
       payload,
     });
   }

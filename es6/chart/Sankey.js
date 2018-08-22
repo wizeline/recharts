@@ -346,11 +346,12 @@ var getPayloadOfTooltip = function getPayloadOfTooltip(el, type, nameKey) {
   if (payload.source && payload.target) {
     var sourceName = getValueByDataKey(payload.source, nameKey, '');
     var targetName = getValueByDataKey(payload.target, nameKey, '');
+    var value = (getValueByDataKey(payload, 'value') * 100).toFixed(0);
 
     return [{
       payload: el,
-      name: sourceName + ' - ' + targetName,
-      value: getValueByDataKey(payload, 'value')
+      name: value + '% of users proceeded from \'' + sourceName + '\' to \'' + targetName + '\'',
+      value: ''
     }];
   }
 
@@ -632,6 +633,7 @@ var Sankey = pureRender(_class = (_temp = _class2 = function (_Component) {
         active: isTooltipActive,
         coordinate: coordinate,
         label: '',
+        separator: '',
         payload: payload
       });
     }
