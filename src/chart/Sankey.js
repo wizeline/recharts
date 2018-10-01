@@ -296,7 +296,7 @@ const getPayloadOfTooltip = (el, type, nameKey) => {
     return [{
       payload: el,
       name: getValueByDataKey(payload, nameKey, ''),
-      value: getValueByDataKey(payload, 'value'),
+      value: ''
     }];
   }
   if (payload.source && payload.target) {
